@@ -23,7 +23,7 @@ export default function Header() {
           <strong>Meu carrinho</strong>
           <span>{cartSize} itens</span>
         </div>
-        <MdShoppingBasket size={36} color="#FFF" />
+        <MdShoppingBasket size={36} />
       </Cart>
     </Container>
   );

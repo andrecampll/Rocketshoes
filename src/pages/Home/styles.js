@@ -3,9 +3,15 @@ import { darken } from 'polished';
 
 export const ProductList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
   grid-gap: 20px;
+
   list-style: none;
+
+  @media (max-width: 830px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   li {
     display: flex;
@@ -13,6 +19,10 @@ export const ProductList = styled.ul`
     background: #fff;
     border-radius: 4px;
     padding: 20px;
+
+    @media (max-width: 830px) {
+      margin-bottom: 20px;
+    }
 
     img {
       align-self: center;
