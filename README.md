@@ -8,9 +8,7 @@ Este repositório é referente ao desafio 'Rocketshoes' do Bootcamp GoStack, da 
 # Proposta 🔥
 Este projeto é um estudo com Redux.
 
-<p align="center">
-  <img src="GoMarketplace.gif" />
-</p>
+# Resultado 🚀
 
 # Tecnologias Utilizadas 🚀
 React ⚛️ <br />
