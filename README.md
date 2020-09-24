@@ -1,45 +1,94 @@
+<h1 align="center">
+    <img alt="React RocketShoes" src="https://res.cloudinary.com/lukemorales/image/upload/v1562696000/readme_logos/react-rocketshoes_jy1lze.png" />
+    <br>
+    React RocketShoes
+</h1>
+
+<h4 align="center">
+  NetShoes Clone App with React and Redux.
+</h4>
 <p align="center">
-  <img src="https://camo.githubusercontent.com/e42868e1d9b1290402ecdcd17b831a281a28f2a7/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6c756b656d6f72616c65732f696d6167652f75706c6f61642f76313536323639363030302f726561646d655f6c6f676f732f72656163742d726f636b657473686f65735f6a79316c7a652e706e67" />
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lukemorales/react-rocketshoes.svg">
+
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/lukemorales/react-rocketshoes.svg">
+
+  <a href="https://www.codacy.com/app/lukemorales/react-rocketshoes?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lukemorales/react-rocketshoes&amp;utm_campaign=Badge_Grade">
+    <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/1b577a07dda843aba09f4bc55d1af8fc.svg">
+  </a>
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/lukemorales/react-rocketshoes.svg">
+  <a href="https://github.com/lukemorales/react-rocketshoes/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lukemorales/react-rocketshoes.svg">
+  </a>
+
+  <a href="https://github.com/lukemorales/react-rocketshoes/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lukemorales/react-rocketshoes.svg">
+  </a>
+
+  <img alt="GitHub" src="https://img.shields.io/github/license/lukemorales/react-rocketshoes.svg">
 </p>
 
-# Rocketshoes 👟
-Este repositório é referente ao desafio 'Rocketshoes' do Bootcamp GoStack, da Rocketseat 🚀.
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</p>
 
-# Proposta 🔥
-Este projeto é um estudo com Redux.
+![App Screenshot](https://res.cloudinary.com/lukemorales/image/upload/v1563042321/readme_logos/rocketshoes_readme_swvhr9.png)
+<p align="center">
+  <a href="https://rocketshoes.netlify.com/" target="_blank">
+    <img alt="Demo on Netlify" src="https://res.cloudinary.com/lukemorales/image/upload/v1563043495/readme_logos/demo_on_netlify_bbuvjz.png">
+  </a>
+</p>
 
-# Resultado 🚀
+## :rocket: Technologies
 
-# Tecnologias Utilizadas 🚀
-React ⚛️ <br />
-Styled-Components 💅🏻 <br />
-React Icons ⚛️❤️ <br />
+This project was developed at the [RocketSeat GoStack Bootcamp](https://rocketseat.com.br/bootcamp) with the following technologies:
 
-# Como obter esse repositório? 🤔
-Para obter esse projeto, siga os passos:
-1. Clone esse repositório utilizando <code>git clone</code>.
-2. Rode o comando <code> yarn </code> na raíz da pasta do projeto clonado para baixar as dependências.
-3. Rode <code>json-server server.json -p 3333</code> na raíz da pasta do projeto para inicializar a Fake API.
-4. Rode <code> yarn start </code> na raíz da pasta do projeto para inicializar a aplicação.
-5. Happy Hacking! 🚀
+-  [ReactJS](https://reactjs.org/)
+-  [Redux](https://redux.js.org/)
+-  [Redux-Saga](https://redux-saga.js.org/)
+-  [React Router v4](https://github.com/ReactTraining/react-router)
+-  [Axios](https://github.com/axios/axios)
+-  [History](https://www.npmjs.com/package/history)
+-  [Immer](https://github.com/immerjs/immer)
+-  [Polished](https://polished.js.org/)
+-  [React-Toastify](https://fkhadra.github.io/react-toastify/)
+-  [styled-components](https://www.styled-components.com/)
+-  [React-Icons](https://react-icons.netlify.com/)
+-  [react-loading-skeleton](https://github.com/dvtng/react-loading-skeleton)
+-  [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner)
+-  [json-server](https://github.com/typicode/json-server)
+-  [Reactotron](https://infinite.red/reactotron)
+-  [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
-# Como Contribuir? 😍
-**Faça um fork deste repositório**
+## :information_source: How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
 
 ```bash
-# Clone o seu fork
-$ git clone url-do-seu-fork && cd Rocketshoes
+# Clone this repository
+$ git clone https://github.com/lukemorales/react-rocketshoes
 
-# Crie uma branch com sua feature ou correção de bugs
-$ git checkout -b minha-branch
+# Go into the repository
+$ cd react-rocketshoes
 
-# Faça o commit das suas alterações
-$ git commit -m 'minhas alterações'
+# Install dependencies
+$ yarn install
 
-# Faça o push para a sua branch
-$ git push origin minha-branch
+# Run the app
+$ yarn start
 ```
 
-Delete sua branch, se quiser, quando o merge da sua pull request for feito. <br />
+## :memo: License
+This project is under the MIT license. See the [LICENSE](https://github.com/lukemorales/react-rocketshoes/blob/master/LICENSE) for more information.
 
-Feito com 💜 por <a href="https://www.linkedin.com/in/andrecampll/" target="blank">andrecampll</a>.
+---
+
+Made with ♥ by Luke Morales :wave: [Get in touch!](https://www.linkedin.com/in/lukemorales/)
+
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
