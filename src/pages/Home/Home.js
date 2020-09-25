@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdAddShoppingCart } from 'react-icons/md';
 import Loader from 'react-loader-spinner';
@@ -8,8 +8,15 @@ import api from '../../services/api';
 import { formatPrice } from '../../utils/format';
 import GridPlaceholder from '../../components/GridPlaceholder/GridPlaceholder';
 import { ProductList } from './Home_Styles';
+import ProductModal from '../../components/ProductModal/index';
 
 export default function Home() {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const toggleModal = useCallback(() => {
+    setIsOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
   const products = useSelector(state => state.products);
 
   const amount = useSelector(state =>
@@ -42,13 +49,17 @@ export default function Home() {
     dispatch(CartActions.addToCartRequest(id));
   }
 
+  // const handleOpenModal = useCallback(() => {
+
+  // }, []);
+
   return (
     <ProductList>
       {products === null ? (
         <GridPlaceholder repeatCount={6} />
       ) : (
         products.map(product => (
-          <li key={product.id}>
+          <li key={product.id} onClick={toggleModal} >
             <figure>
               <img src={product.image} alt={product.title} />
             </figure>
@@ -73,6 +84,11 @@ export default function Home() {
           </li>
         ))
       )}
+
+      <ProductModal
+        isOpen={isOpenModal}
+        toggleModal={toggleModal}
+      />
     </ProductList>
   );
 }
