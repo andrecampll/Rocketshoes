@@ -12,9 +12,11 @@ import ProductModal from '../../components/ProductModal/index';
 
 export default function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState('');
 
-  const toggleModal = useCallback(() => {
+  const toggleModal = useCallback((id) => {
     setIsOpenModal(!isOpenModal);
+    setSelectedProductId(id);
   }, [isOpenModal]);
 
   const products = useSelector(state => state.products);
@@ -55,7 +57,7 @@ export default function Home() {
         <GridPlaceholder repeatCount={6} />
       ) : (
         products.map(product => (
-          <li key={product.id} onClick={toggleModal} >
+          <li key={product.id} onClick={() => toggleModal(product.id)} >
             <figure>
               <img src={product.image} alt={product.title} />
             </figure>
@@ -84,6 +86,7 @@ export default function Home() {
       <ProductModal
         isOpen={isOpenModal}
         toggleModal={toggleModal}
+        selectedProductId={selectedProductId}
       />
     </ProductList>
   );
