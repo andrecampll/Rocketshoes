@@ -42,10 +42,6 @@ const ProductModal: React.FC<IModalProps> = ({
     subtitle.style.color = '#f00';
   }
 
-  function closeModal(){
-    setIsOpen(false);
-  }
-
   return (
     <div>
         <button>Open Modal</button>
@@ -58,7 +54,7 @@ const ProductModal: React.FC<IModalProps> = ({
         >
 
           <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>close</button>
+          <button onClick={toggleModal}>close</button>
           <div>I am a modal</div>
           <form>
             <input />
