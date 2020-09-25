@@ -45,13 +45,9 @@ export default function Home() {
     loadProducts();
   }, [dispatch]);
 
-  function handleAddProduct(id) {
+  const handleAddProduct = useCallback((id) => {
     dispatch(CartActions.addToCartRequest(id));
-  }
-
-  // const handleOpenModal = useCallback(() => {
-
-  // }, []);
+  }, []);
 
   return (
     <ProductList>
