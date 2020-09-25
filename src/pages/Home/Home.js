@@ -87,6 +87,7 @@ export default function Home() {
         isOpen={isOpenModal}
         toggleModal={toggleModal}
         selectedProductId={selectedProductId}
+        handleAddProduct={handleAddProduct}
       />
     </ProductList>
   );

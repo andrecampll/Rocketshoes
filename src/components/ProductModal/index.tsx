@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import api from '../../services/api';
+import Loader from 'react-loader-spinner';
+import { MdAddShoppingCart } from 'react-icons/md';
+import { formatPrice } from '../../utils/format';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 interface IModalProps {
   isOpen: boolean;
   children?: any;
   toggleModal: () => void;
   selectedProductId: string;
+  handleAddProduct: (id: number) => void;
+}
+
+interface IProduct {
+  id: number;
+  image: string;
+  price: number;
+  title: string;
+  priceFormatted: string;
+  loading: boolean;
 }
 
 const customStyles = {
@@ -31,46 +45,74 @@ const ProductModal: React.FC<IModalProps> = ({
   isOpen,
   toggleModal,
   selectedProductId,
-  // setBarbers,
-  // setSelectedBarber,
+  handleAddProduct,
 }) => {
   var subtitle: any;
-  const [modalIsOpen,setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   useEffect(() => {
-    api.get(`products/${selectedProductId}`).then(response => {
-      console.log(response);
-    })
+    async function loadProduct() {
+      const response = await api.get(`products/${selectedProductId}`);
+
+      setProduct({
+        ...response.data,
+        priceFormatted: formatPrice(response.data.price),
+        loading: false,
+      });
+    }
+
+    loadProduct();
   }, [selectedProductId]);
 
   useEffect(() => {
     setIsOpen(isOpen);
   }, [isOpen]);
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
+  const amount = useSelector((state: any) =>
+    state.cart.reduce((sumAmount: any, product: any) => {
+      sumAmount[product.id] = product.amount;
+
+      return sumAmount;
+    }, {})
+  );
 
   return (
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={toggleModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
+        <Container>
+          <img src={product.image} />
 
-        <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={toggleModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+          <aside>
+
+            <div>
+              <h1
+                key={product.id}
+              >
+                {product.title}
+              </h1>
+
+              <h2>{product.priceFormatted}</h2>
+
+            </div>
+            <button type="button" onClick={() => handleAddProduct(product.id)}>
+              {product.loading ? (
+                <Loader type="Oval" color="#FFF" height={16} width={24} />
+              ) : (
+                <div>
+                  <MdAddShoppingCart size={16} color="#FFF" />
+                  {amount[product.id] || 0}
+                </div>
+              )}
+
+              <span>ADD TO CART</span>
+            </button>
+          </aside>
+        </Container>
       </Modal>
   );
 }
