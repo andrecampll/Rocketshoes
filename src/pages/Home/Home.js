@@ -12,7 +12,7 @@ import ProductModal from '../../components/ProductModal/index';
 
 export default function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState('');
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   const toggleModal = useCallback((id) => {
     setIsOpenModal(!isOpenModal);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import api from '../../services/api';
@@ -53,17 +53,20 @@ const ProductModal: React.FC<IModalProps> = ({
   const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   useEffect(() => {
-    async function loadProduct() {
-      const response = await api.get(`products/${selectedProductId}`);
+      async function loadProduct() {
+        const response = await api.get(`products/${selectedProductId}`);
+  
+        setProduct({
+          ...response.data,
+          priceFormatted: formatPrice(response.data.price),
+          loading: false,
+        });
+      }
 
-      setProduct({
-        ...response.data,
-        priceFormatted: formatPrice(response.data.price),
-        loading: false,
-      });
-    }
+      if (selectedProductId) {
 
-    loadProduct();
+        loadProduct();
+      }
   }, [selectedProductId]);
 
   useEffect(() => {
@@ -78,15 +81,24 @@ const ProductModal: React.FC<IModalProps> = ({
     }, {})
   );
 
+  const handleRequestClose = useCallback(() => {
+    setProduct({} as IProduct);
+  }, []);
+
+  console.log(product);
+
   return (
       <Modal
         isOpen={modalIsOpen}
+        onAfterClose={handleRequestClose}
         onRequestClose={toggleModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         {
-          product ? (
+          Object.keys(product).length === 0 ? (
+            <ModalPlaceholder />
+          ) : (
             <Container>
               <img src={product.image} />
 
@@ -116,8 +128,6 @@ const ProductModal: React.FC<IModalProps> = ({
                 </button>
               </aside>
             </Container>
-          ) : (
-            <ModalPlaceholder />
           )
         }
       </Modal>

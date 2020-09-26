@@ -6,7 +6,7 @@ import { Container } from './styles';
 const ModalPlaceholder: React.FC = () => {
   return (
     <Container>
-      <Skeleton width={400} height={349} />
+      <Skeleton width={360} height={349} />
 
       <aside>
 
