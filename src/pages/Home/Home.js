@@ -57,9 +57,13 @@ export default function Home() {
         <GridPlaceholder repeatCount={6} />
       ) : (
         products.map(product => (
-          <li key={product.id} onClick={() => toggleModal(product.id)} >
+          <li key={product.id}>
             <figure>
-              <img src={product.image} alt={product.title} />
+              <img
+                src={product.image}
+                alt={product.title}
+                onClick={() => toggleModal(product.id)}
+              />
             </figure>
             <strong>{product.title}</strong>
 

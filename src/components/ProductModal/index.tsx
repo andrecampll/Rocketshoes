@@ -5,6 +5,7 @@ import api from '../../services/api';
 import Loader from 'react-loader-spinner';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { formatPrice } from '../../utils/format';
+import ModalPlaceholder from '../../components/ModalPlaceholder';
 
 import { Container } from './styles';
 
@@ -34,7 +35,7 @@ const customStyles = {
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     width: '72%',
-    height: '73%',
+    height: '70%',
   }
 };
 
@@ -84,35 +85,41 @@ const ProductModal: React.FC<IModalProps> = ({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <Container>
-          <img src={product.image} />
+        {
+          product ? (
+            <Container>
+              <img src={product.image} />
 
-          <aside>
+              <aside>
 
-            <div>
-              <h1
-                key={product.id}
-              >
-                {product.title}
-              </h1>
-
-              <h2>{product.priceFormatted}</h2>
-
-            </div>
-            <button type="button" onClick={() => handleAddProduct(product.id)}>
-              {product.loading ? (
-                <Loader type="Oval" color="#FFF" height={16} width={24} />
-              ) : (
                 <div>
-                  <MdAddShoppingCart size={16} color="#FFF" />
-                  {amount[product.id] || 0}
-                </div>
-              )}
+                  <h1
+                    key={product.id}
+                  >
+                    {product.title}
+                  </h1>
 
-              <span>ADD TO CART</span>
-            </button>
-          </aside>
-        </Container>
+                  <h2>{product.priceFormatted}</h2>
+
+                </div>
+                <button type="button" onClick={() => handleAddProduct(product.id)}>
+                  {product.loading ? (
+                    <Loader type="Oval" color="#FFF" height={16} width={24} />
+                  ) : (
+                    <div>
+                      <MdAddShoppingCart size={16} color="#FFF" />
+                      {amount[product.id] || 0}
+                    </div>
+                  )}
+
+                  <span>ADD TO CART</span>
+                </button>
+              </aside>
+            </Container>
+          ) : (
+            <ModalPlaceholder />
+          )
+        }
       </Modal>
   );
 }
