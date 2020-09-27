@@ -49,7 +49,7 @@ export default function Home() {
 
   const handleAddProduct = useCallback((id) => {
     dispatch(CartActions.addToCartRequest(id));
-  }, []);
+  }, [dispatch]);
 
   return (
     <ProductList>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import api from '../../services/api';
 import Loader from 'react-loader-spinner';
@@ -48,7 +48,6 @@ const ProductModal: React.FC<IModalProps> = ({
   selectedProductId,
   handleAddProduct,
 }) => {
-  var subtitle: any;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState<IProduct>({} as IProduct);
 
@@ -85,8 +84,6 @@ const ProductModal: React.FC<IModalProps> = ({
     setProduct({} as IProduct);
   }, []);
 
-  console.log(product);
-
   return (
       <Modal
         isOpen={modalIsOpen}
@@ -100,7 +97,7 @@ const ProductModal: React.FC<IModalProps> = ({
             <ModalPlaceholder />
           ) : (
             <Container>
-              <img src={product.image} />
+              <img src={product.image} alt={product.title} />
 
               <aside>
 
